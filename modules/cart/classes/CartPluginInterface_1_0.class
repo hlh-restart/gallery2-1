@@ -37,7 +37,7 @@ class CartPluginInterface_1_0 {
      *
      * @return array item types
      */
-    function getSupportedItemTypes() {
+    static function getSupportedItemTypes() {
 	return array();
     }
 
@@ -47,7 +47,7 @@ class CartPluginInterface_1_0 {
      * @return array GalleryStatus a status code
      *               string the action display name
      */
-    function getActionDisplayName() {
+    static function getActionDisplayName() {
 	return array(GalleryCoreApi::error(ERROR_UNIMPLEMENTED), null);
     }
 
@@ -57,7 +57,7 @@ class CartPluginInterface_1_0 {
      * @return array GalleryStatus a status code
      *               array url components that can be passed to the UrlGenerator
      */
-    function fulfillCart($cartItemIds) {
+    static function fulfillCart($cartItemIds) {
 	return array(GalleryCoreApi::error(ERROR_UNIMPLEMENTED), null);
     }
 }

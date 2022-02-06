@@ -54,7 +54,7 @@ class GalleryRenderer {
      * @param array $params format specific key value pairs
      * @return string formatted output
      */
-    function render($format, $entity, $item, $params) {
+    static function render($format, $entity, $item, $params) {
 	return null;
     }
 }

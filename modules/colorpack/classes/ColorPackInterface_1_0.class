@@ -34,7 +34,7 @@ class ColorPackInterface_1_0 {
      * @return array GalleryStatus a status code,
      *               array of colorpack_id => localized_colorpack_name
      */
-    function getColorPacks() {
+    static function getColorPacks() {
 	return array(GalleryCoreApi::error(ERROR_UNIMPLEMENTED), null);
     }
 
@@ -44,7 +44,7 @@ class ColorPackInterface_1_0 {
      * @param string $colorpack id of colorpack to use
      * @return GalleryStatus a status code
      */
-    function selectColorPack(&$template, $colorpack) {
+    static function selectColorPack(&$template, $colorpack) {
 	return GalleryCoreApi::error(ERROR_UNIMPLEMENTED);
     }
 }

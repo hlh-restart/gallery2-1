@@ -55,7 +55,7 @@ class NotificationHelper {
      * 							     'enabled' => 0|1)
      * 		     int the lock id
      */
-    function getEnabledNotifications($forUpdate=false) {
+    static function getEnabledNotifications($forUpdate=false) {
 	$eventMapLockId = null;
 	if ($forUpdate) {
 	    list($ret, $eventMapLock) =

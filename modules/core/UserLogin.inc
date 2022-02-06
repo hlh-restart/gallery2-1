@@ -49,7 +49,7 @@ class UserLoginController extends GalleryController {
     /**
      * @see GalleryController::isAllowedInMaintenance
      */
-    function isAllowedInMaintenance() {
+    static function isAllowedInMaintenance() {
 	return true;
     }
 

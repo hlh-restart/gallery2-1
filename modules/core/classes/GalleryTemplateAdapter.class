@@ -66,7 +66,7 @@ class GalleryTemplateAdapter {
     var $_progressBarStats;
 
 
-    function GalleryTemplateAdapter() {
+    function __construct() {
 	$this->_callCount = array();
 	$this->_theme = null;
 	$this->_trailer = null;
@@ -522,7 +522,7 @@ class GalleryTemplateAdapter {
 		    array('type' => 'module',
 			  'itemId' => 'CombinedJavascript_gzip_' . $key,
 			  'id' => '_all'),
-		    $phpVm->gzencode($contents, 9, FORCE_GZIP));
+		    $phpVm->gzencode($contents, 9));
 	    }
 	}
 	return $urlGenerator->generateUrl(

@@ -975,7 +975,7 @@ class ImageBlockHelper /* extends GalleryEventListener */ {
      * @return array GalleryStatus a status code
      *               boolean disabledFlag for the GalleryDataItem
      */
-    function getDisabledFlag($itemId) {
+    static function getDisabledFlag($itemId) {
 	list ($ret, $searchResults) = GalleryCoreApi::getMapEntry('ImageBlockDisabledMap',
 	    array('itemId'), array('itemId' => (int)$itemId));
 	if ($ret) {

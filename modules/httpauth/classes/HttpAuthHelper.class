@@ -144,7 +144,7 @@ class HttpAuthHelper /* extends HttpAuthInterface_1_0 */ {
      *               string HTTP username
      *               string HTTP password
      */
-    function getHttpAuth() {
+    static function getHttpAuth() {
 	$authtype = GalleryUtilities::getServerVar('AUTH_TYPE');
 	$username = GalleryUtilities::getServerVar('PHP_AUTH_USER');
 	$password = GalleryUtilities::getServerVar('PHP_AUTH_PW');
@@ -178,7 +178,7 @@ class HttpAuthHelper /* extends HttpAuthInterface_1_0 */ {
      * @return array GalleryStatus a status code
      *               GalleryUser the active user or null
      */
-    function getUser($authtype, $username) {
+    static function getUser($authtype, $username) {
 	list ($ret, $params) = GalleryCoreApi::fetchAllPluginParameters('module', 'httpauth');
 	if ($ret) {
 	    return array($ret, null);
@@ -312,7 +312,7 @@ class HttpAuthHelper /* extends HttpAuthInterface_1_0 */ {
     /**
      * @see HttpAuthInterface_1_0::requestAuthentication
      */
-    function requestAuthentication($ignoreUseGloballyFlag=true) {
+    static function requestAuthentication($ignoreUseGloballyFlag=true) {
 	list ($ret, $params) = GalleryCoreApi::fetchAllPluginParameters('module', 'httpauth');
 	if ($ret) {
 	    return $ret;

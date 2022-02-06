@@ -219,7 +219,7 @@ class CaptchaAdminOption {
      *               array(pluginType, pluginId, parameterName) to configure
      *               array of string choices (any of HIGH, MEDIUM, LOW, OFF)
      */
-    function getOptionData() {
+    static function getOptionData() {
 	return array(GalleryCoreApi::error(ERROR_UNIMPLEMENTED),
 		     null, null, null);
     }

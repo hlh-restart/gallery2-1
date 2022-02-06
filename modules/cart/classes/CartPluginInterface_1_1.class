@@ -39,7 +39,7 @@ class CartPluginInterface_1_1 extends CartPluginInterface_1_0 {
      * @return array permission ids
      * @since 1.1
      */
-    function getRequiredPermissions() {
+    static function getRequiredPermissions() {
 	return array();
     }
 }

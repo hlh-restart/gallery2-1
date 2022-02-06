@@ -174,7 +174,7 @@ class GalleryController {
      *
      * @return boolean true if access always allowed
      */
-    function isAllowedInMaintenance() {
+    static function isAllowedInMaintenance() {
 	return false;
     }
 
@@ -183,7 +183,7 @@ class GalleryController {
      *
      * @return boolean true if access always allowed
      */
-    function isAllowedInEmbedOnly() {
+    static function isAllowedInEmbedOnly() {
 	return false;
     }
 
@@ -195,7 +195,7 @@ class GalleryController {
      *
      * @return boolean true if the controller opts-out from the auth token check
      */
-    function omitAuthTokenCheck() {
+    static function omitAuthTokenCheck() {
 	return false;
     }
 
@@ -204,7 +204,7 @@ class GalleryController {
      *
      * @return boolean true to enable session
      */
-    function shouldSaveSession() {
+    static function shouldSaveSession() {
 	return true;
     }
 
@@ -250,7 +250,7 @@ class GalleryController {
      *               GalleryItem an item
      * @throws ERROR_MISSING_VALUE if there is no itemId in the request parameters.
      */
-    function getItem($checkPermissions=true) {
+    static function getItem($checkPermissions=true) {
 	$itemId = (int)GalleryUtilities::getRequestVariables('itemId');
 
 	if (empty($itemId)) {
@@ -280,7 +280,7 @@ class GalleryController {
     /**
      * @see GalleryView::_permissionCheck()
      */
-    function permissionCheck($ret) {
+    static function permissionCheck($ret) {
 	GalleryCoreApi::requireOnce('modules/core/classes/GalleryView.class');
 	$view = new GalleryView();
 	list ($ret, $results) = $view->_permissionCheck($ret);

@@ -119,7 +119,7 @@ class GalleryView {
      * Type of view.
      * @return view type contant
      */
-    function getViewType() {
+    static function getViewType() {
 	return VIEW_TYPE_MODULE;
     }
 
@@ -338,7 +338,7 @@ class GalleryView {
      *               GalleryItem an item
      *               boolean true if item was specified, false if default was used
      */
-    function getItem($checkPermissions=true) {
+    static function getItem($checkPermissions=true) {
 	global $gallery;
 	$itemId = (int)GalleryUtilities::getRequestVariables('itemId');
 	$wasSpecified = true;
@@ -380,7 +380,7 @@ class GalleryView {
      *               boolean true if item was specified, false if default was used
      * @deprecated Please use getItem() instead.
      */
-    function _getItem() {
+    static function _getItem() {
 	return $this->getItem();
     }
 
@@ -545,7 +545,7 @@ class GalleryView {
      * @access private
      * @static
      */
-    static function _loadTheme($themeId) {
+    function _loadTheme($themeId) {
 	$validTheme = false;
 	list ($ret, $theme) = GalleryCoreApi::loadPlugin('theme', $themeId, false, true);
 	if ($ret) {
@@ -583,7 +583,7 @@ class GalleryView {
      * @param string $access (optional) no-cache
      * @return GalleryStatus
      */
-     function setCacheControl(&$template, $access=null) {
+    function setCacheControl(&$template, $access=null) {
 	global $gallery;
 	$phpVm = $gallery->getPhpVm();
 	$itemId = (int)GalleryUtilities::getRequestVariables('itemId');
@@ -652,7 +652,7 @@ class GalleryView {
      * @return GalleryStatus
      * @static
      */
-    static function setStandardTemplateVariables(&$template) {
+    function setStandardTemplateVariables(&$template) {
 	global $gallery;
 	$session =& $gallery->getSession();
 

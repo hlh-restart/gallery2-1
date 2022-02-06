@@ -101,7 +101,7 @@ class ShowItemView extends GalleryView {
     /**
      * @see GalleryView::getItem
      */
-    function getItem($getOriginalSpecified=false) {
+    static function getItem($getOriginalSpecified=false) {
 	static $originalSpecified;
 	list ($ret, $item, $wasSpecified) = parent::getItem();
 	if ($ret) {
@@ -134,7 +134,7 @@ class ShowItemView extends GalleryView {
     /**
      * @see GalleryView::getViewType
      */
-    function getViewType() {
+    static function getViewType() {
 	return VIEW_TYPE_SHOW_ITEM;
     }
 }

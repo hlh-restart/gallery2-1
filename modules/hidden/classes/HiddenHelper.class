@@ -29,6 +29,10 @@ GalleryCoreApi::requireOnce('modules/hidden/classes/HiddenInterface_1_0.class');
  */
 class HiddenHelper extends HiddenInterface_1_0 {
 
+    function __construct() {
+	$this->_notEmpty = true;
+    }
+
     /**
      * Hides an item.
      *
@@ -521,10 +525,6 @@ class HiddenHelper extends HiddenInterface_1_0 {
      */
     function isHidden($item) {
 	return array(null, $item->hasOnLoadHandler('Hidden'));
-    }
-
-    function HiddenHelper() {
-	$this->_notEmpty = true;
     }
 }
 ?>
