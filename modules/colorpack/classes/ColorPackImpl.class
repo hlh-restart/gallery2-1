@@ -61,7 +61,7 @@ class ColorPackImpl extends ColorPackInterface_1_0 {
     /**
      * @see ColorPackInterface_1_0::selectColorPack
      */
-    function selectColorPack(&$template, $colorpack) {
+    static function selectColorPack(&$template, $colorpack) {
 	if (!empty($colorpack)) {
 	    $template->style("modules/colorpack/packs/$colorpack/color.css");
 	}
@@ -74,7 +74,7 @@ class ColorPackImpl extends ColorPackInterface_1_0 {
      * @param string $string
      * @return translated string
      */
-    function translate($string) {
+    static function translate($string) {
 	global $gallery;
 	$translator =& $gallery->getTranslator();
 	list ($ret, $content) = $translator->translateDomain('modules_colorpack', $string);

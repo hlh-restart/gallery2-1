@@ -34,7 +34,7 @@ class ColorPackInterface_1_0 {
      * @return array GalleryStatus a status code,
      *               array of colorpack_id => localized_colorpack_name
      */
-    static function getColorPacks() {
+    function getColorPacks() {
 	return array(GalleryCoreApi::error(ERROR_UNIMPLEMENTED), null);
     }
 

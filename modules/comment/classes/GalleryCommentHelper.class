@@ -169,7 +169,11 @@ class GalleryCommentHelper /* implements GalleryEventListener */ {
 	 AND
 	   [GalleryAccessSubscriberMap::itemId] = [GalleryItemAttributesMap::itemId]';
 	if ($publishStatus !== null) {
-	    $statusMarkers = GalleryUtilities::makeMarkers(count($publishStatus));
+	    if (is_countable($publishStatus)) {
+	        $statusMarkers = GalleryUtilities::makeMarkers(count($publishStatus));
+	    } else {
+	        $statusMarkers = GalleryUtilities::makeMarkers(1);
+	    }
 	    $queryBase .= '
 	 AND
 	   [GalleryComment::publishStatus] IN (' . $statusMarkers . ')';

@@ -39,7 +39,7 @@ class PanoramaRenderer extends GalleryRenderer {
     /**
      * @see GalleryRenderer::render
      */
-    function render($format, $entity, $item, $params) {
+    static function render($format, $entity, $item, $params) {
 	global $gallery;
 	$urlGenerator =& $gallery->getUrlGenerator();
 
