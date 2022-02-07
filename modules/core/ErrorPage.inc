@@ -34,7 +34,7 @@ class ErrorPageView extends GalleryView {
     /**
      * @see GalleryView::getViewType
      */
-    function getViewType() {
+    static function getViewType() {
 	return VIEW_TYPE_ERROR;
     }
 
