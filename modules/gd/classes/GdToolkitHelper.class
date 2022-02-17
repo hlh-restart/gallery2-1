@@ -37,7 +37,7 @@ class GdToolkitHelper {
      *	 array('operations' => ...
      *	       'properties' => ...)
      */
-    function getOperationsAndProperties($gd=null) {
+    static function getOperationsAndProperties($gd=null) {
 	global $gallery;
 
 	if (!isset($gd)) {
@@ -181,7 +181,7 @@ class GdToolkitHelper {
      * Checks if a certain operation is supported by this GD library
      * @return boolean
      */
-    function isOperationSupported($operation, $gd=null) {
+    static function isOperationSupported($operation, $gd=null) {
 	if (!isset($gd)) {
 	    $gd =& GdToolkitHelper::getGdFunctionality();
 	}
@@ -283,7 +283,7 @@ class GdToolkitHelper {
 		return array($ret, false);
 	    }
 	}
-	if (preg_match('/^>?2\.[01]/', $gdVersion)) {
+	if (preg_match('/^>?2\.[0123]/', $gdVersion)) {
 	    return array(null, true);
 	}
 	/* 1.6, 1.8, ... is too old */

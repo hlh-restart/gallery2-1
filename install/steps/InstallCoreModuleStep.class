@@ -230,6 +230,7 @@ class InstallCoreModuleStep extends InstallStep {
 	global $galleryStub;
 
 	$storage =& $gallery->getStorage();
+	$gallery->debug("We are Here...\n");
 	$isSvnInstall = $galleryStub->getConfig('systemchecks.issvninstall');
 	$isSvnInstall = empty($isSvnInstall) ? "No" : "Yes";
 
@@ -245,11 +246,12 @@ System and Gallery information:
     PHP disable_functions:\t" . ini_get('disable_functions') . "
     PHP zend.ze1_compatibility_mode:\t" . ini_get('zend.ze1_compatibility_mode') . "
     Webserver:\t" . GalleryUtilities::getServerVar('SERVER_SOFTWARE') . "
-    Database:\t" . $storage->getAdoDbType() . " " . @$storage->getVersion() . "
     Operating system:\t" . php_uname() . "
     Browser:\t " . GalleryUtilities::getServerVar('HTTP_USER_AGENT') . "
 --------------------------------------------------------\n\n
 ");
+//    Database:\t" . $storage->getAdoDbType() . " " . @$storage->getVersion() . "
+
     }
 }
 ?>

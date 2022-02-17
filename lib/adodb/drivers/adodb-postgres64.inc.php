@@ -165,7 +165,7 @@ a different OID if a database must be reloaded. */
    function _affectedrows()
    {
    		if (!is_resource($this->_resultid) || get_resource_type($this->_resultid) !== 'pgsql result') return false;
-	   	return pg_cmdtuples($this->_resultid);
+	   	return pg_affected_rows($this->_resultid);
    }
    
 	
@@ -782,7 +782,7 @@ WHERE (c2.relname=\'%s\' or c2.relname=lower(\'%s\'))';
 		// check if no data returned, then no need to create real recordset
 		if ($rez && pg_num_fields($rez) <= 0) {
 			if (is_resource($this->_resultid) && get_resource_type($this->_resultid) === 'pgsql result') {
-				pg_freeresult($this->_resultid);
+				pg_free_result($this->_resultid);
 			}
 			$this->_resultid = $rez;
 			return true;

@@ -29,7 +29,7 @@ class CommentCaptchaAdminOption extends CaptchaAdminOption {
     /**
      * @see CaptchaAdminOption::getOptionData
      */
-    function getOptionData() {
+    static function getOptionData() {
 	list ($ret, $module) = GalleryCoreApi::loadPlugin('module', 'comment');
 	if ($ret) {
 	    return array($ret, null, null, null);

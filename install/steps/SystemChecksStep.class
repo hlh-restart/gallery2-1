@@ -33,7 +33,8 @@ class SystemChecksStep extends InstallStep {
      */
     function _getBytes($val) {
 	$val = trim($val);
-	$last = $val{strlen($val)-1};
+	$last = $val[strlen($val)-1];
+	$val = intval($val);
 	switch ($last) {
 	case 'g':
 	case 'G':

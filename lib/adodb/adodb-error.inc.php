@@ -90,25 +90,27 @@ function adodb_error($provider,$dbType,$errno)
 
 function adodb_error_pg($errormsg)
 {
-	if (is_numeric($errormsg)) return (integer) $errormsg;
+    if (is_numeric($errormsg)) return (integer) $errormsg;
     static $error_regexps = array(
-            '/(Table does not exist\.|Relation [\"\'].*[\"\'] does not exist|sequence does not exist|class ".+" not found)$/i' => DB_ERROR_NOSUCHTABLE,
-            '/Relation [\"\'].*[\"\'] already exists|Cannot insert a duplicate key into (a )?unique index.*/i'      => DB_ERROR_ALREADY_EXISTS,
-            '/divide by zero$/i'                     => DB_ERROR_DIVZERO,
+            '/(Table does not exist\.|relation [\"\'].*[\"\'] does not exist|sequence does not exist|class ".+" not found)/i' => DB_ERROR_NOSUCHTABLE,
+            '/Relation [\"\'].*[\"\'] already exists|Cannot insert a duplicate key into (a )?unique index.*/i' => DB_ERROR_ALREADY_EXISTS,
+            '/divide by zero/i' => DB_ERROR_DIVZERO,
             '/pg_atoi: error in .*: can\'t parse /i' => DB_ERROR_INVALID_NUMBER,
             '/ttribute [\"\'].*[\"\'] not found|Relation [\"\'].*[\"\'] does not have attribute [\"\'].*[\"\']/i' => DB_ERROR_NOSUCHFIELD,
-            '/parser: parse error at or near \"/i'   => DB_ERROR_SYNTAX,
-            '/referential integrity violation/i'     => DB_ERROR_CONSTRAINT,
-			'/Relation [\"\'].*[\"\'] already exists|Cannot insert a duplicate key into (a )?unique index.*|duplicate key violates unique constraint/i'     
-			 	 => DB_ERROR_ALREADY_EXISTS
+            '/parser: parse error at or near \"/i' => DB_ERROR_SYNTAX,
+            '/referential integrity violation/i' => DB_ERROR_CONSTRAINT,
+	    '/Relation [\"\'].*[\"\'] already exists|Cannot insert a duplicate key into (a )?unique index.*|duplicate key violates unique constraint/i'     
+			 => DB_ERROR_ALREADY_EXISTS
         );
-	reset($error_regexps);
+    reset($error_regexps);
 //  while (list($regexp,$code) = each($error_regexps)) {
-    foreach (error_regexps as $regexp => $code) {
-        if (preg_match($regexp, $errormsg)) {
+    printf("<PRE>%s</PRE>\n", $errormsg);
+    foreach ($error_regexps as $regexp => $code) {
+    	if (preg_match($regexp, $errormsg)) {
             return $code;
         }
     }
+    print_r(DB_ERROR);
     // Fall back to DB_ERROR if there was no mapping.
     return DB_ERROR;
 }
