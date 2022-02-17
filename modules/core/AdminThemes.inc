@@ -39,7 +39,6 @@ class AdminThemesController extends GalleryController {
 	$status = $error = $errorMessage = array();
 	$theme = null;
 	$themeId = GalleryUtilities::getRequestVariables('themeId');
-
 	if (isset($form['action']['saveDefaults'])) {
 	    /* Do some basic input validation (by whitelisting) */
 	    GalleryCoreApi::requireOnce('modules/core/classes/GallerySortInterface_1_2.class');

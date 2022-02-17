@@ -1983,7 +1983,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
     /**
      * @see HTTP_WebDAV_Server::getHref
      */
-    static function getHref($path) {
+    function getHref($path) {
 	global $gallery;
 	$urlGenerator =& $gallery->getUrlGenerator();
 
@@ -1997,7 +1997,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
     /**
      * @see HTTP_WebDAV_Server::openRequestBody
      */
-    static function openRequestBody() {
+    function openRequestBody() {
 	global $gallery;
 	$platform =& $gallery->getPlatform();
 
@@ -2007,14 +2007,14 @@ class WebDavServer extends HTTP_WebDAV_Server {
     /**
      * @see HTTP_WebDAV_Server::setResponseHeader
      */
-    static function setResponseHeader($header, $replace=true) {
+    function setResponseHeader($header, $replace=true) {
 	GalleryUtilities::setResponseHeader($header, $replace);
     }
 
     /**
      * @see HTTP_WebDAV_Server::setResponseStatus
      */
-    static function setResponseStatus($status, $replace=true) {
+    function setResponseStatus($status, $replace=true) {
 	GalleryUtilities::setResponseHeader("HTTP/1.0 $status", $replace);
     }
 }
