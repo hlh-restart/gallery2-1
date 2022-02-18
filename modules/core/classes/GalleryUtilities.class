@@ -492,7 +492,9 @@ class GalleryUtilities {
      * @return string rounded value
      */
     static function roundToString($floatValue, $precision=0) {
-	return str_replace(',', '.', round($floatValue, $precision));
+    	if (is_numeric($floatValue)) {
+	    return str_replace(',', '.',round($floatValue, $precision));
+	}
     }
 
     /**

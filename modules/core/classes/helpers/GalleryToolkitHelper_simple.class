@@ -101,7 +101,11 @@ class GalleryToolkitHelper_simple {
 	    if ($ret) {
 		return array($ret, null);
 	    }
-	    $toolkit = $toolkits[0];
+	    if (is_array($toolkits)) {
+		$toolkit = $toolkits[0];
+	    } else {
+	        return array(null, null);
+	    }
 	} else {
 	    $toolkit = GalleryDataCache::get($cacheKey);
 	}

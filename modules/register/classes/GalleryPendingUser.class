@@ -135,7 +135,7 @@ class GalleryPendingUser extends GalleryEntity {
      *
      * @return GalleryStatus a status code
      */
-    function create($userName) {
+    function create(?string $userName = null) {
 	global $gallery;
 
 	/* first check for a collision in the pending users table */
@@ -157,7 +157,7 @@ class GalleryPendingUser extends GalleryEntity {
 	}
 
 	$result = $results->nextResult();
-	if ($result[0] > 0) {
+	if (is_array($result) && $result[0] > 0) {
 	    return GalleryCoreApi::error(ERROR_COLLISION);
 	}
 
@@ -180,7 +180,7 @@ class GalleryPendingUser extends GalleryEntity {
 	}
 
 	$result = $results->nextResult();
-	if ($result[0] > 0) {
+	if (is_array($result) && $result[0] > 0) {
 	    return GalleryCoreApi::error(ERROR_COLLISION);
 	}
 
