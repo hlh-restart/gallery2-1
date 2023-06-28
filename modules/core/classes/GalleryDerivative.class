@@ -211,7 +211,7 @@ class GalleryDerivative extends GalleryChildEntity {
      * @param int $parentId the id of the parent GalleryItem
      * @return GalleryStatus a status code
      */
-    function create($parentId=null) {
+    function create($parentId=false) {
 	$ret = parent::create($parentId);
 	if ($ret) {
 	    return $ret;
@@ -549,9 +549,10 @@ class GalleryDerivative extends GalleryChildEntity {
 	     * upsampling, and it is as good a source as the original (better in fact, since we
 	     * skip at least one operation).
 	     */
-	    if (count($sources) > 1 && /* we have at least one derivative in the chain */
+	     if (count($sources) > 1 && /* we have at least one derivative in the chain */
 		    $sources[0]->getDerivativeType() == DERIVATIVE_TYPE_IMAGE_PREFERRED &&
-		    strlen($sources[0]->getPostFilterOperations()) == 0) {
+		    ($sources[0]->getPostFilterOperations() == null ||
+		     strlen($sources[0]->getPostFilterOperations()) == 0)) {
 		$source = array_shift($sources);  /* the preferred is now our source */
 	    }
 
@@ -575,6 +576,8 @@ class GalleryDerivative extends GalleryChildEntity {
 
 	/* Merge in the postfilter operations */
 	$postFilters = $this->getPostFilterOperations();
+	if ($postFilters == null)
+	    $postFilters = '';
 	if (empty($operations)) {
 	    $operations = empty($postFilters) ? array() : explode(';', $postFilters);
 	} else {

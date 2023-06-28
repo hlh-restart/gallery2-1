@@ -29,27 +29,32 @@
 	{
         $this->rs = $rs;
     }
+    #[\ReturnTypeWillChange]
     function rewind() 
 	{
         $this->rs->MoveFirst();
     }
 
-	function valid() 
+    #[\ReturnTypeWillChange]
+    function valid()
 	{
         return !$this->rs->EOF;
     }
 	
+    #[\ReturnTypeWillChange]
     function key() 
 	{
         return $this->rs->_currentRow;
     }
 	
-    function current() 
+    #[\ReturnTypeWillChange]
+    function current()
 	{
         return $this->rs->fields;
     }
 	
-    function next() 
+    #[\ReturnTypeWillChange]
+    function next()
 	{
         $this->rs->MoveNext();
     }
@@ -69,6 +74,7 @@
 
 
 class ADODB_BASE_RS implements IteratorAggregate {
+    #[\ReturnTypeWillChange]
     function getIterator() {
         return new ADODB_Iterator($this);
     }

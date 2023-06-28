@@ -484,7 +484,10 @@ class GalleryEntity extends GalleryPersistent {
      * @return boolean
      */
     function hasOnLoadHandler($handlerId) {
-	return (strpos($this->getOnLoadHandlers(), "|$handlerId|") !== false);
+	if ($this->getOnLoadHandlers() == null)
+	    return (false);
+	else
+	    return (strpos($this->getOnLoadHandlers(), "|$handlerId|") !== false);
     }
 
     /**

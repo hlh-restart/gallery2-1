@@ -1168,8 +1168,8 @@ class GalleryTemplateAdapter {
 	    $timeRemaining = ($elapsed / $percentComplete) - $elapsed;
 	    $timeRemaining = $coreModule->translate(
 		array('text' => 'Estimated time remaining: %d:%02d',
-		      'arg1' => (int)($timeRemaining / 60),
-		      'arg2' => $timeRemaining % 60));
+		      'arg1' => (int)((int)$timeRemaining / 60),
+		      'arg2' => (int)((int)$timeRemaining % 60)));
 	} else {
 	    $timeRemaining = '';
 	}

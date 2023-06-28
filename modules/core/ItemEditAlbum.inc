@@ -226,7 +226,10 @@ class ItemEditAlbum extends ItemEditPlugin {
      */
     function loadTemplate(&$template, &$form, $item, $thumbnail) {
 	if ($form['formName'] != 'ItemEditAlbum') {
-	    $tmp = explode('|', $item->getOrderBy(), 2);
+	    if ($item->getOrderBy() != null)
+		$tmp = explode('|', $item->getOrderBy(), 2);
+	    else
+	        $tmp = array();
 	    if (count($tmp) < 2) {
 		$form['orderBy'] = $item->getOrderBy();
 		$form['presort'] = '';

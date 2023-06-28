@@ -268,6 +268,8 @@ class StringParser {
 	 *               in strict mode or the object is already parsing a text.
 	 */
 	function parse ($text) {
+		if ($text == null)
+			$text='';
 		if ($this->_parsing) {
 			return false;
 		}

@@ -117,7 +117,8 @@ class ADODB_postgres7 extends ADODB_postgres64 {
 		}
 		// check if no data returned, then no need to create real recordset
 		if ($rez && pg_num_fields($rez) <= 0) {
-			if (is_resource($this->_resultid) && get_resource_type($this->_resultid) === 'pgsql result') {
+//			if (is_resource($this->_resultid) && get_resource_type($this->_resultid) === 'pgsql result') {
+			if (is_object($this->_resultid) && get_class($this->_resultid) == 'PgSql\\Result') {
 				pg_freeresult($this->_resultid);
 			}
 			$this->_resultid = $rez;

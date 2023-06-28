@@ -335,7 +335,7 @@ class ExifHelper {
 	     */
 //	    $value = preg_replace('/(\d*)[\.,](\d{3,})/e', 'sprintf(\'%.2f\', $1.$2)', $value);
 	    $value = preg_replace_callback('/(\d*)[\.,](\d{3,})/',
-					   function($m) {return sprintf('%.2f', $m[0].$m[1]);}, $value);		
+					   function($m) {return sprintf('%.2f', $m[1].$m[2]);}, $value);		
 	    break;
 	}
 

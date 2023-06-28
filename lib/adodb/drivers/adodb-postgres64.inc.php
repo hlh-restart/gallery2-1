@@ -154,7 +154,8 @@ Unless you are very careful, you might end up with a tuple having
 a different OID if a database must be reloaded. */
 	function _insertid($table,$column)
 	{
-		if (!is_resource($this->_resultid) || get_resource_type($this->_resultid) !== 'pgsql result') return false;
+//		if (!is_resource($this->_resultid) || get_resource_type($this->_resultid) !== 'pgsql result') return false;
+		if (!is_object($this->_resultid) || get_class($this->_resultid) != 'PgSql\\Result') return false;
 		$oid = pg_getlastoid($this->_resultid);
 		// to really return the id, we need the table and column-name, else we can only return the oid != id
 		return empty($table) || empty($column) ? $oid : $this->GetOne("SELECT $column FROM $table WHERE oid=".(int)$oid);
@@ -162,11 +163,12 @@ a different OID if a database must be reloaded. */
 
 // I get this error with PHP before 4.0.6 - jlim
 // Warning: This compilation does not support pg_cmdtuples() in adodb-postgres.inc.php on line 44
-   function _affectedrows()
-   {
-   		if (!is_resource($this->_resultid) || get_resource_type($this->_resultid) !== 'pgsql result') return false;
+	function _affectedrows()
+	{
+//   		if (!is_resource($this->_resultid) || get_resource_type($this->_resultid) !== 'pgsql result') return false;
+		if (!is_object($this->_resultid) || get_class($this->_resultid) != 'PgSql\\Result') return false;
 	   	return pg_affected_rows($this->_resultid);
-   }
+	}
    
 	
 		// returns true/false
@@ -781,7 +783,8 @@ WHERE (c2.relname=\'%s\' or c2.relname=lower(\'%s\'))';
 		}
 		// check if no data returned, then no need to create real recordset
 		if ($rez && pg_num_fields($rez) <= 0) {
-			if (is_resource($this->_resultid) && get_resource_type($this->_resultid) === 'pgsql result') {
+//			if (is_resource($this->_resultid) && get_resource_type($this->_resultid) === 'pgsql result') {
+			if (is_object($this->_resultid) && get_class($this->_resultid) == 'PgSql\\Result') {
 				pg_free_result($this->_resultid);
 			}
 			$this->_resultid = $rez;
