@@ -52,7 +52,7 @@ function smarty_function_html_select_date($params, &$smarty)
     $month_value_format = "m";
     $day_format      = "%02d";
     /* Write day values using this format MB */
-    $day_value_format = "d";
+    $day_value_format = "%d";
     $year_as_text    = false;
     /* Display years in reverse order? Ie. 2000,1999,.... */
     $reverse_years   = false;
